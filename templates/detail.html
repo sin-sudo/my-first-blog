@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block customcss %}
+{% endblock customcss %}
+
+{% block header %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-4">個別投稿ページ</h1>
+    <p class="lead">個別投稿ページです。</p>
+  </div>
+</div>
+{% endblock header %}
+
+{% block content %}
+<div class='container'>
+  <div class="alert alert-success" role="alert">
+    <p>タイトル：{{object.title}}</p>
+    <p>投稿者：{{object.author}}</p>
+    <p>内容：{{object.content}}</p>
+    <p><img src = '{{ object.images.url }}' width = 300></img></p>
+    <!-- どのデータのいいねを増やせばいいのかdjangoはわからなくなるのでobject.pkで指定する -->
+    <a href="{% url 'good' object.pk%}" class="btn btn-primary" role="button" aria-pressed="true">いいねする</a>
+    <a href="#" class="btn btn-secondary" role="button" aria-pressed="true">既読にする</a>
+  </div>
+</div>
+{% endblock content %}
